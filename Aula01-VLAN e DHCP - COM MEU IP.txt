@@ -1,0 +1,102 @@
+No Servidor DHCP
+ABA - DESKTOP
+Static
+10.9.10.1
+255.255.255.0
+10.9.10.2
+200.200.200.200
+
+ABA - SERVICES
+DHCP
+serverPool 
+Default Gateway 10.9.10.2
+DNS Server 200.200.200.200
+Start IP Address 10.9.10.10
+Maximum Number of Users: 50
+SAVE
+
+VLAN20
+Default Gateway 10.9.20.2
+DNS Server 200.200.200.200
+Start IP Address 10.9.20.10
+Maximum Number of Users: 50
+ADD
+
+VLAN30
+Default Gateway 10.9.30.2
+DNS Server 200.200.200.200
+Start IP Address 10.9.30.10
+Maximum Number of Users: 50
+ADD
+
+VLAN40
+Default Gateway 10.9.40.2
+DNS Server 200.200.200.200
+Start IP Address 10.9.40.10
+Maximum Number of Users: 50
+ADD
+
+No Switch
+ABA - CLI
+enable
+conf t
+vlan 10
+name SERVER
+vlan 20
+name ADM
+vlan 30
+name FIN
+vlan 40
+name TI
+exit
+exit
+show vlan bri
+conf t
+int f0/1
+switchport mode access
+switchport access vlan 10
+int f0/2
+switchport mode access
+switchport access vlan 20
+int f0/3
+switchport mode access
+switchport access vlan 30
+int f0/4
+switchport mode access
+switchport access vlan 40
+exit
+exit
+show vlan bri
+conf t
+int vlan 10
+ip add 10.9.10.2 255.255.255.0
+no shut
+int vlan 20
+ip add 10.9.20.2 255.255.255.0
+ip helper-address 10.9.10.1
+int vlan 30
+ip add 10.9.30.2 255.255.255.0
+ip helper-address 10.9.10.1
+int vlan 40
+ip add 10.9.40.2 255.255.255.0
+ip helper-address 10.9.10.1
+exit
+ip routing
+
+No Notebook
+ABA - GUI
+ABA - Setup
+DHCP SERVER - Disabled
+Save
+ABA - Wireless
+Network Name: vlanTI
+Save
+ABA - Wireless Security
+Passphrase: vlanTI-40
+Save
+
+No Wireless Component
+ABA - CONFIG 
+Wireless0
+SSID - vlanTI (vlantTI-Roma)
+Senha WPA2-PSK: vlanTI-40 (vlanTI-40-ROMA)

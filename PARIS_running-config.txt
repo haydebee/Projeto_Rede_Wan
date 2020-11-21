@@ -1,0 +1,162 @@
+!
+version 12.2
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname SW-PARIS
+!
+!
+enable password uninove
+!
+!
+!
+!
+!
+ip routing
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain-lookup
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface FastEthernet0/1
+ switchport access vlan 10
+ switchport mode access
+ switchport nonegotiate
+!
+interface FastEthernet0/2
+ switchport access vlan 20
+ switchport mode access
+ switchport nonegotiate
+!
+interface FastEthernet0/3
+ switchport access vlan 30
+ switchport mode access
+ switchport nonegotiate
+!
+interface FastEthernet0/4
+ switchport access vlan 40
+ switchport mode access
+ switchport nonegotiate
+!
+interface FastEthernet0/5
+!
+interface FastEthernet0/6
+!
+interface FastEthernet0/7
+!
+interface FastEthernet0/8
+!
+interface FastEthernet0/9
+!
+interface FastEthernet0/10
+!
+interface FastEthernet0/11
+!
+interface FastEthernet0/12
+!
+interface FastEthernet0/13
+!
+interface FastEthernet0/14
+!
+interface FastEthernet0/15
+!
+interface FastEthernet0/16
+!
+interface FastEthernet0/17
+!
+interface FastEthernet0/18
+!
+interface FastEthernet0/19
+!
+interface FastEthernet0/20
+!
+interface FastEthernet0/21
+!
+interface FastEthernet0/22
+!
+interface FastEthernet0/23
+!
+interface FastEthernet0/24
+!
+interface GigabitEthernet0/1
+ no switchport
+ ip address 201.108.101.25 255.255.255.252
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/2
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+interface Vlan10
+ mac-address 0030.a3a0.a901
+ ip address 192.168.181.1 255.255.255.192
+ ip helper-address 192.168.181.194
+ ip nat inside
+!
+interface Vlan20
+ mac-address 0030.a3a0.a902
+ ip address 192.168.181.65 255.255.255.192
+ ip helper-address 192.168.181.194
+ ip nat inside
+!
+interface Vlan30
+ mac-address 0030.a3a0.a903
+ ip address 192.168.181.129 255.255.255.192
+ ip helper-address 192.168.181.194
+ ip nat inside
+!
+interface Vlan40
+ mac-address 0030.a3a0.a904
+ ip address 192.168.181.193 255.255.255.192
+ ip nat inside
+!
+ip nat inside source list 1 interface GigabitEthernet0/1 overload
+ip classless
+ip route 0.0.0.0 0.0.0.0 201.108.101.26 
+!
+ip flow-export version 9
+!
+!
+access-list 1 permit any
+!
+!
+!
+!
+!
+!
+line con 0
+ password uninove
+ login
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+!
+end
+
