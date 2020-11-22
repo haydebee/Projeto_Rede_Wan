@@ -1,0 +1,4 @@
+Aula 04 ipv6
+Não está pingando os roteadores HOLANDA e ALEMANHA
+Aula 02 NAT
+Falta configurar NAT para Zurique
